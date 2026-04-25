@@ -1,0 +1,9 @@
+{
+  "name": "dog-squad-central",
+  "version": "1.0.0",
+  "description": "Your trusted home for everything dogs",
+  "scripts": {
+    "dev": "npx serve -l 3000",
+    "start": "npx serve -l 3000"
+  }
+}
