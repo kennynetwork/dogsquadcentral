@@ -1,0 +1,1790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Dog Squad Central | Trusted Home for Everything Dogs</title>
+  <meta name="description" content="Your trusted home for everything dogs - breeds, nutrition, training, health tips, and a loving community of dog lovers.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #e67e22;
+      --primary-dark: #c9681a;
+      --primary-light: #f5a54a;
+      --secondary: #2e241f;
+      --bg-cream: #fefaf5;
+      --bg-warm: #fff8f2;
+      --bg-card: #ffffff;
+      --text-dark: #2a241f;
+      --text-muted: #6b5b4f;
+      --border-light: #f0e2d4;
+      --shadow-sm: 0 4px 20px rgba(0,0,0,0.04);
+      --shadow-md: 0 10px 40px rgba(0,0,0,0.08);
+      --shadow-lg: 0 20px 60px rgba(0,0,0,0.12);
+      --radius-sm: 12px;
+      --radius-md: 20px;
+      --radius-lg: 32px;
+      --radius-xl: 48px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg-cream);
+      color: var(--text-dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Navigation */
+    nav {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border-light);
+      transition: all 0.3s ease;
+    }
+
+    nav.scrolled {
+      padding: 0.7rem 2rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-weight: 800;
+      font-size: 1.5rem;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 600;
+      color: var(--text-dark);
+      font-size: 0.95rem;
+      transition: all 0.2s ease;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--text-dark);
+    }
+
+    /* Main Content */
+    main {
+      margin-top: 80px;
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: calc(100vh - 80px);
+      display: flex;
+      align-items: center;
+      padding: 4rem 2rem;
+      background: linear-gradient(135deg, var(--bg-warm) 0%, var(--bg-cream) 50%, #fff4e8 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 80%;
+      height: 150%;
+      background: radial-gradient(circle, rgba(230, 126, 34, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-content h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 4rem;
+      font-weight: 800;
+      line-height: 1.1;
+      color: var(--text-dark);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-content h1 span {
+      color: var(--primary);
+    }
+
+    .hero-tagline {
+      font-size: 1.25rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      max-width: 500px;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 3rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--primary);
+      display: block;
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 1rem 2rem;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      box-shadow: 0 4px 20px rgba(230, 126, 34, 0.3);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(230, 126, 34, 0.4);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+    }
+
+    .btn-outline:hover {
+      background: var(--primary);
+      color: white;
+      transform: translateY(-3px);
+    }
+
+    .hero-image {
+      position: relative;
+    }
+
+    .hero-image-main {
+      width: 100%;
+      max-width: 550px;
+      height: 600px;
+      object-fit: cover;
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .hero-floating-card {
+      position: absolute;
+      background: white;
+      padding: 1rem 1.5rem;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-md);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .hero-floating-card.card-1 {
+      top: 10%;
+      left: -10%;
+      animation-delay: 0s;
+    }
+
+    .hero-floating-card.card-2 {
+      bottom: 20%;
+      right: -5%;
+      animation-delay: 1s;
+    }
+
+    .hero-floating-card.card-3 {
+      bottom: 5%;
+      left: 5%;
+      animation-delay: 2s;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .floating-icon {
+      width: 45px;
+      height: 45px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+    }
+
+    .floating-icon.orange { background: #fff3e8; }
+    .floating-icon.green { background: #e8f5e8; }
+    .floating-icon.blue { background: #e8f0ff; }
+
+    /* Section Styles */
+    section {
+      padding: 5rem 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, rgba(230, 126, 34, 0.1), rgba(230, 126, 34, 0.05));
+      color: var(--primary);
+      padding: 0.5rem 1.25rem;
+      border-radius: 60px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      margin-bottom: 1rem;
+    }
+
+    .section-subtitle {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Quick Navigation Cards */
+    .quick-nav {
+      background: var(--bg-warm);
+      border-radius: var(--radius-xl);
+      padding: 4rem 3rem;
+      margin: 2rem;
+    }
+
+    .nav-cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+
+    .nav-card {
+      background: white;
+      border-radius: var(--radius-md);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      text-decoration: none;
+      color: var(--text-dark);
+      transition: all 0.3s ease;
+      border: 1px solid var(--border-light);
+    }
+
+    .nav-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--primary);
+    }
+
+    .nav-card-icon {
+      width: 70px;
+      height: 70px;
+      margin: 0 auto 1rem;
+      background: linear-gradient(135deg, rgba(230, 126, 34, 0.1), rgba(230, 126, 34, 0.05));
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      transition: all 0.3s ease;
+    }
+
+    .nav-card:hover .nav-card-icon {
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      transform: scale(1.1);
+    }
+
+    .nav-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .nav-card p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* Dog Gallery */
+    .gallery-section {
+      background: white;
+      padding: 5rem 2rem;
+    }
+
+    .gallery-filter {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      padding: 0.75rem 1.5rem;
+      border: 2px solid var(--border-light);
+      background: white;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      color: var(--text-dark);
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: white;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .dog-card {
+      background: white;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--border-light);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .dog-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .dog-card-image {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .dog-card-image img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .dog-card:hover .dog-card-image img {
+      transform: scale(1.08);
+    }
+
+    .dog-card-badge {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 0.4rem 0.8rem;
+      border-radius: 60px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    .dog-card-content {
+      padding: 1.5rem;
+    }
+
+    .dog-card-name {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 0.25rem;
+    }
+
+    .dog-card-breed {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* Video Section */
+    .video-section {
+      background: linear-gradient(135deg, var(--secondary) 0%, #1a1512 100%);
+      padding: 5rem 2rem;
+      margin: 0;
+      max-width: 100%;
+    }
+
+    .video-section .section-header {
+      color: white;
+    }
+
+    .video-section .section-badge {
+      background: rgba(230, 126, 34, 0.2);
+    }
+
+    .video-section .section-title {
+      color: white;
+    }
+
+    .video-section .section-subtitle {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .video-card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .video-card:hover {
+      transform: translateY(-5px);
+      background: rgba(255, 255, 255, 0.08);
+      border-color: var(--primary);
+    }
+
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+    }
+
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .video-info {
+      padding: 1.5rem;
+    }
+
+    .video-title {
+      color: white;
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .video-description {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.9rem;
+    }
+
+    /* Content Blocks */
+    .content-section {
+      background: var(--bg-warm);
+      border-radius: var(--radius-xl);
+      padding: 4rem 3rem;
+      margin: 2rem;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .info-card {
+      background: white;
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      border-left: 4px solid var(--primary);
+      transition: all 0.3s ease;
+    }
+
+    .info-card:hover {
+      transform: translateX(5px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .info-card h4 {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .info-card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .warning-box {
+      background: linear-gradient(135deg, #fff0e5, #ffe8d6);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      margin-top: 2rem;
+      border: 1px solid rgba(230, 126, 34, 0.2);
+    }
+
+    .warning-box h4 {
+      color: var(--primary-dark);
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* Quote Section */
+    .quote-section {
+      text-align: center;
+      padding: 6rem 2rem;
+      background: linear-gradient(135deg, var(--bg-cream), var(--bg-warm));
+    }
+
+    .quote-icon {
+      font-size: 4rem;
+      margin-bottom: 2rem;
+    }
+
+    .quote-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      max-width: 800px;
+      margin: 0 auto 1rem;
+      line-height: 1.4;
+    }
+
+    .quote-author {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    /* Contact Section */
+    .contact-section {
+      background: var(--secondary);
+      border-radius: var(--radius-xl);
+      margin: 2rem;
+      padding: 4rem 3rem;
+    }
+
+    .contact-section .section-title {
+      color: white;
+    }
+
+    .contact-section .section-subtitle {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .contact-card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: var(--radius-md);
+      padding: 2rem;
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .contact-card:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-5px);
+    }
+
+    .contact-icon {
+      width: 60px;
+      height: 60px;
+      margin: 0 auto 1rem;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+    }
+
+    .contact-card h4 {
+      color: white;
+      margin-bottom: 0.5rem;
+    }
+
+    .contact-card p,
+    .contact-card a {
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      font-size: 0.95rem;
+    }
+
+    .contact-card a:hover {
+      color: var(--primary-light);
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 3rem;
+    }
+
+    .social-link {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: rgba(230, 126, 34, 0.15);
+      padding: 0.8rem 1.5rem;
+      border-radius: 60px;
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      border: 1px solid rgba(230, 126, 34, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .social-link:hover {
+      background: var(--primary);
+      border-color: var(--primary);
+      transform: translateY(-3px);
+    }
+
+    /* Footer */
+    footer {
+      background: #1a1512;
+      color: rgba(255, 255, 255, 0.8);
+      padding: 4rem 2rem 2rem;
+    }
+
+    .footer-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-brand h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: white;
+      margin-bottom: 1rem;
+    }
+
+    .footer-brand p {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .footer-links h4 {
+      color: white;
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
+    }
+
+    .footer-links ul {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.6);
+      text-decoration: none;
+      transition: color 0.2s ease;
+      font-size: 0.9rem;
+    }
+
+    .footer-links a:hover {
+      color: var(--primary-light);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 2rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    /* Image Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    .modal-content {
+      max-width: 900px;
+      max-height: 90vh;
+      position: relative;
+    }
+
+    .modal-content img {
+      max-width: 100%;
+      max-height: 80vh;
+      border-radius: var(--radius-lg);
+    }
+
+    .modal-info {
+      text-align: center;
+      margin-top: 1rem;
+      color: white;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: -40px;
+      right: 0;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 2rem;
+      cursor: pointer;
+    }
+
+    /* Scroll to Top */
+    .scroll-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 50px;
+      height: 50px;
+      background: var(--primary);
+      border: none;
+      border-radius: 50%;
+      color: white;
+      font-size: 1.25rem;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow-md);
+      z-index: 100;
+    }
+
+    .scroll-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .scroll-top:hover {
+      transform: translateY(-5px);
+      background: var(--primary-dark);
+    }
+
+    /* Loading Animation */
+    .loading-skeleton {
+      background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+      background-size: 200% 100%;
+      animation: skeleton 1.5s infinite;
+    }
+
+    @keyframes skeleton {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+      .hero-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .hero-content h1 {
+        font-size: 3rem;
+      }
+
+      .hero-tagline {
+        margin: 0 auto 2rem;
+      }
+
+      .hero-stats {
+        justify-content: center;
+      }
+
+      .hero-buttons {
+        justify-content: center;
+      }
+
+      .hero-image {
+        max-width: 500px;
+        margin: 0 auto;
+      }
+
+      .hero-floating-card {
+        display: none;
+      }
+
+      .nav-cards {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        padding: 0.8rem 1rem;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: white;
+        flex-direction: column;
+        padding: 1rem;
+        gap: 1rem;
+        border-bottom: 1px solid var(--border-light);
+        box-shadow: var(--shadow-sm);
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .mobile-menu-btn {
+        display: block;
+      }
+
+      .hero {
+        padding: 2rem 1rem;
+        min-height: auto;
+      }
+
+      .hero-content h1 {
+        font-size: 2.25rem;
+      }
+
+      .hero-stats {
+        gap: 1.5rem;
+      }
+
+      .stat-number {
+        font-size: 2rem;
+      }
+
+      section {
+        padding: 3rem 1rem;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+
+      .quick-nav,
+      .content-section,
+      .contact-section {
+        margin: 1rem;
+        padding: 2rem 1.5rem;
+      }
+
+      .nav-cards {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1rem;
+      }
+
+      .video-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .social-links {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .quote-text {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav id="navbar">
+    <a href="#" class="logo">
+      <div class="logo-icon">🐕</div>
+      <span>Dog Squad Central</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#breeds">Breeds</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#videos">Videos</a></li>
+      <li><a href="#nutrition">Nutrition</a></li>
+      <li><a href="#training">Training</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">☰</button>
+  </nav>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-container">
+        <div class="hero-content">
+          <h1>Your Trusted Home for <span>Everything Dogs</span></h1>
+          <p class="hero-tagline">Join thousands of dog lovers in our community dedicated to helping every pup live their happiest, healthiest life.</p>
+          
+          <div class="hero-stats">
+            <div class="stat-item">
+              <span class="stat-number" id="visitorCount">12,500</span>
+              <span class="stat-label">Happy Visitors</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">50+</span>
+              <span class="stat-label">Breed Guides</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">100+</span>
+              <span class="stat-label">Care Tips</span>
+            </div>
+          </div>
+
+          <div class="hero-buttons">
+            <a href="#breeds" class="btn btn-primary">Explore Breeds →</a>
+            <a href="#videos" class="btn btn-outline">Watch Videos</a>
+          </div>
+        </div>
+
+        <div class="hero-image">
+          <img 
+            src="https://images.pexels.com/photos/1805164/pexels-photo-1805164.jpeg?auto=compress&cs=tinysrgb&w=800" 
+            alt="Happy Golden Retriever dog smiling" 
+            class="hero-image-main"
+            loading="eager"
+          >
+          <div class="hero-floating-card card-1">
+            <div class="floating-icon orange">🐕</div>
+            <div>
+              <strong>50+ Breeds</strong>
+              <p style="font-size: 0.8rem; color: var(--text-muted);">Detailed guides</p>
+            </div>
+          </div>
+          <div class="hero-floating-card card-2">
+            <div class="floating-icon green">💚</div>
+            <div>
+              <strong>Health Tips</strong>
+              <p style="font-size: 0.8rem; color: var(--text-muted);">Expert advice</p>
+            </div>
+          </div>
+          <div class="hero-floating-card card-3">
+            <div class="floating-icon blue">🎓</div>
+            <div>
+              <strong>Training</strong>
+              <p style="font-size: 0.8rem; color: var(--text-muted);">Positive methods</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick Navigation -->
+    <div class="quick-nav">
+      <div class="section-header">
+        <span class="section-badge">Quick Access</span>
+        <h2 class="section-title">Everything You Need</h2>
+        <p class="section-subtitle">Explore our comprehensive resources for dog care and training</p>
+      </div>
+      <div class="nav-cards">
+        <a href="#breeds" class="nav-card">
+          <div class="nav-card-icon">🐶</div>
+          <h3>Dog Breeds</h3>
+          <p>Small, medium, large &amp; working dogs</p>
+        </a>
+        <a href="#nutrition" class="nav-card">
+          <div class="nav-card-icon">🥩</div>
+          <h3>Nutrition</h3>
+          <p>Healthy meals &amp; diet tips</p>
+        </a>
+        <a href="#training" class="nav-card">
+          <div class="nav-card-icon">🧠</div>
+          <h3>Training</h3>
+          <p>Positive methods &amp; commands</p>
+        </a>
+        <a href="#health" class="nav-card">
+          <div class="nav-card-icon">🏥</div>
+          <h3>Health</h3>
+          <p>Vaccines, grooming &amp; wellness</p>
+        </a>
+      </div>
+    </div>
+
+    <!-- Breeds Section -->
+    <section id="breeds">
+      <div class="section-header">
+        <span class="section-badge">Breed Guide</span>
+        <h2 class="section-title">Dog Breeds &amp; Categories</h2>
+        <p class="section-subtitle">Understanding dog breeds helps you choose the perfect companion for your lifestyle</p>
+      </div>
+      
+      <div class="content-section" style="margin: 0;">
+        <div class="content-grid">
+          <div class="info-card">
+            <h4>🐕 Small Breeds</h4>
+            <p>Chihuahua, Pomeranian, Yorkshire Terrier, Maltese, Shih Tzu – perfect for apartments and cozy homes.</p>
+          </div>
+          <div class="info-card">
+            <h4>🐕‍🦺 Medium Breeds</h4>
+            <p>Bulldog, Border Collie, Cocker Spaniel, Beagle, Australian Shepherd – active, loyal companions.</p>
+          </div>
+          <div class="info-card">
+            <h4>🦮 Large Breeds</h4>
+            <p>German Shepherd, Labrador, Golden Retriever, Great Dane, Rottweiler – gentle giants and protectors.</p>
+          </div>
+          <div class="info-card">
+            <h4>🚔 Working Dogs</h4>
+            <p>Police dogs, search &amp; rescue, service dogs – German Shepherd, Belgian Malinois, and more.</p>
+          </div>
+          <div class="info-card">
+            <h4>🏡 Companion Dogs</h4>
+            <p>Pug, French Bulldog, Cavalier King Charles Spaniel – ideal family pets who love to cuddle.</p>
+          </div>
+          <div class="info-card">
+            <h4>🌟 Mixed Breeds</h4>
+            <p>Unique and special, mixed breeds often have fewer health issues and amazing personalities.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dog Gallery -->
+    <section class="gallery-section" id="gallery">
+      <div class="section-header">
+        <span class="section-badge">Photo Gallery</span>
+        <h2 class="section-title">Meet Our Furry Friends</h2>
+        <p class="section-subtitle">Click on any photo to see it in full size</p>
+      </div>
+
+      <div class="gallery-filter">
+        <button class="filter-btn active" data-filter="all">All Dogs</button>
+        <button class="filter-btn" data-filter="small">Small</button>
+        <button class="filter-btn" data-filter="medium">Medium</button>
+        <button class="filter-btn" data-filter="large">Large</button>
+      </div>
+
+      <div class="gallery-grid" id="galleryGrid"></div>
+    </section>
+
+    <!-- Video Section -->
+    <section class="video-section" id="videos">
+      <div class="section-header">
+        <span class="section-badge">Video Content</span>
+        <h2 class="section-title">Watch &amp; Learn</h2>
+        <p class="section-subtitle">Entertaining and educational dog videos from around the web</p>
+      </div>
+
+      <div class="video-grid">
+        <div class="video-card">
+          <div class="video-wrapper">
+            <iframe 
+              src="https://www.youtube.com/embed/j5a0jTc9S10" 
+              title="Funny Dogs Compilation"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen
+              loading="lazy"
+            ></iframe>
+          </div>
+          <div class="video-info">
+            <h4 class="video-title">Funny Dogs Compilation</h4>
+            <p class="video-description">Hilarious moments with our four-legged friends</p>
+          </div>
+        </div>
+
+        <div class="video-card">
+          <div class="video-wrapper">
+            <iframe 
+              src="https://www.youtube.com/embed/qiYz_lBZWGk" 
+              title="Dog Training Basics"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen
+              loading="lazy"
+            ></iframe>
+          </div>
+          <div class="video-info">
+            <h4 class="video-title">Dog Training Basics</h4>
+            <p class="video-description">Essential commands every dog should know</p>
+          </div>
+        </div>
+
+        <div class="video-card">
+          <div class="video-wrapper">
+            <iframe 
+              src="https://www.youtube.com/embed/D3vOqRXx7vI" 
+              title="Cutest Puppies"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen
+              loading="lazy"
+            ></iframe>
+          </div>
+          <div class="video-info">
+            <h4 class="video-title">Cutest Puppies Ever</h4>
+            <p class="video-description">Adorable puppy moments to brighten your day</p>
+          </div>
+        </div>
+
+        <div class="video-card">
+          <div class="video-wrapper">
+            <iframe 
+              src="https://www.youtube.com/embed/Hc8bO2E-zVA" 
+              title="Dogs Playing"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen
+              loading="lazy"
+            ></iframe>
+          </div>
+          <div class="video-info">
+            <h4 class="video-title">Dogs at Play</h4>
+            <p class="video-description">Watch dogs having the time of their lives</p>
+          </div>
+        </div>
+
+        <div class="video-card">
+          <div class="video-wrapper">
+            <iframe 
+              src="https://www.youtube.com/embed/SB_oU68Q9zA" 
+              title="Amazing Dog Tricks"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen
+              loading="lazy"
+            ></iframe>
+          </div>
+          <div class="video-info">
+            <h4 class="video-title">Amazing Dog Tricks</h4>
+            <p class="video-description">Incredible tricks performed by talented dogs</p>
+          </div>
+        </div>
+
+        <div class="video-card">
+          <div class="video-wrapper">
+            <iframe 
+              src="https://www.youtube.com/embed/7JkGaGM_Bk0" 
+              title="Dog Care Tips"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen
+              loading="lazy"
+            ></iframe>
+          </div>
+          <div class="video-info">
+            <h4 class="video-title">Essential Dog Care Tips</h4>
+            <p class="video-description">Expert advice for keeping your dog healthy</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Nutrition Section -->
+    <section id="nutrition">
+      <div class="section-header">
+        <span class="section-badge">Nutrition Guide</span>
+        <h2 class="section-title">Healthy Meals &amp; Diet Tips</h2>
+        <p class="section-subtitle">Proper nutrition is the foundation of a happy, energetic dog</p>
+      </div>
+
+      <div class="content-section" style="margin: 0;">
+        <div class="content-grid">
+          <div class="info-card">
+            <h4>🍗 Types of Dog Food</h4>
+            <p>Dry kibble, wet food, raw diet (BARF), and homemade meals – each has its benefits.</p>
+          </div>
+          <div class="info-card">
+            <h4>🥗 Essential Nutrients</h4>
+            <p>Protein for muscles, fats for energy, carbs for fuel, plus vitamins &amp; minerals.</p>
+          </div>
+          <div class="info-card">
+            <h4>🍽️ Sample Meal Ideas</h4>
+            <p>Rice + chicken + veggies, fish + sweet potato, healthy treats like apple slices.</p>
+          </div>
+          <div class="info-card">
+            <h4>🕒 Feeding Schedule</h4>
+            <p>Puppies: 3-4x/day | Adults: 2x/day | Always provide fresh water.</p>
+          </div>
+        </div>
+
+        <div class="warning-box">
+          <h4>⚠️ Foods to AVOID (Dangerous)</h4>
+          <p>Chocolate, onion, garlic, grapes, raisins, alcohol, xylitol, macadamia nuts, and caffeine. These can be toxic or even fatal to dogs!</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Training Section -->
+    <section id="training">
+      <div class="section-header">
+        <span class="section-badge">Training Guide</span>
+        <h2 class="section-title">Training &amp; Positive Methods</h2>
+        <p class="section-subtitle">Kindness-based training builds trust and creates a lasting bond</p>
+      </div>
+
+      <div class="content-section" style="margin: 0;">
+        <div class="content-grid">
+          <div class="info-card">
+            <h4>🐕 Basic Commands</h4>
+            <p>Sit, Stay, Come, Down, Leave it – master these first for a well-behaved pup.</p>
+          </div>
+          <div class="info-card">
+            <h4>🎯 Training Methods</h4>
+            <p>Positive reinforcement with treats/praise, clicker training, short daily sessions.</p>
+          </div>
+          <div class="info-card">
+            <h4>🚽 Behavior Training</h4>
+            <p>Stop excessive barking, prevent biting, potty training, and leash manners.</p>
+          </div>
+          <div class="info-card">
+            <h4>🧩 Mental Stimulation</h4>
+            <p>Puzzle toys, hide-and-seek, nose work games, and interactive play sessions.</p>
+          </div>
+        </div>
+
+        <div class="warning-box">
+          <h4>❌ Common Mistakes to Avoid</h4>
+          <p>Never shout or use physical punishment. Avoid inconsistency in commands. Always reward good behavior immediately. Patience is key!</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Health Section -->
+    <section id="health">
+      <div class="section-header">
+        <span class="section-badge">Health Guide</span>
+        <h2 class="section-title">Vet Care &amp; Wellness</h2>
+        <p class="section-subtitle">Prevention is key to a long, healthy life for your furry friend</p>
+      </div>
+
+      <div class="content-section" style="margin: 0;">
+        <div class="content-grid">
+          <div class="info-card">
+            <h4>💉 Core Vaccines</h4>
+            <p>Rabies, Distemper, Parvovirus, Adenovirus – essential for every dog.</p>
+          </div>
+          <div class="info-card">
+            <h4>🐛 Parasite Control</h4>
+            <p>Regular flea, tick, and worm prevention including heartworm medication.</p>
+          </div>
+          <div class="info-card">
+            <h4>🩺 Common Issues</h4>
+            <p>Parvo, skin/ear infections, dental disease – early detection saves lives.</p>
+          </div>
+          <div class="info-card">
+            <h4>🧼 Grooming Essentials</h4>
+            <p>Weekly brushing, nail trimming, ear cleaning, and regular baths.</p>
+          </div>
+        </div>
+
+        <div class="warning-box">
+          <h4>🚨 Emergency Signs – Visit Vet Immediately</h4>
+          <p>Not eating for 24+ hours, persistent vomiting/diarrhea, lethargy, difficulty breathing, sudden collapse, seizures, or signs of pain.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quote Section -->
+    <section class="quote-section">
+      <div class="quote-icon">💙</div>
+      <p class="quote-text">"Dogs are not our whole life, but they make our lives whole."</p>
+      <p class="quote-author">— Roger Caras</p>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+      <div class="section-header">
+        <span class="section-badge">Our Story</span>
+        <h2 class="section-title">About Dog Squad Central</h2>
+        <p class="section-subtitle">A community of dog lovers dedicated to helping every pup thrive</p>
+      </div>
+
+      <div class="content-section" style="margin: 0; text-align: center;">
+        <p style="font-size: 1.1rem; max-width: 800px; margin: 0 auto;">
+          <strong>Welcome to Dog Squad Central</strong> — your trusted home for everything dogs. We are a passionate community dedicated to helping every pup live a happy, healthy life. From nutrition and training to breed guides and vet care, we provide real, actionable advice backed by experts and fellow dog lovers.
+        </p>
+        <p style="margin-top: 1.5rem; font-size: 1.1rem; max-width: 800px; margin: 1.5rem auto 0;">
+          Our mission is simple: <strong>Educate dog owners, promote responsible care, and celebrate the incredible human-dog bond.</strong> Because every dog deserves the very best. 🐕
+        </p>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <div class="contact-section" id="contact">
+      <div class="section-header">
+        <span class="section-badge">Get in Touch</span>
+        <h2 class="section-title">Join Our Pack</h2>
+        <p class="section-subtitle">Connect with us and thousands of fellow dog lovers</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-card">
+          <div class="contact-icon">📍</div>
+          <h4>Location</h4>
+          <p>3 Rapiel Eristavi St<br>Tbilisi 0179, Georgia</p>
+        </div>
+        <div class="contact-card">
+          <div class="contact-icon">💬</div>
+          <h4>Discord</h4>
+          <a href="https://discord.gg/wV4kjB5T8" target="_blank">Join our community</a>
+        </div>
+        <div class="contact-card">
+          <div class="contact-icon">🐦</div>
+          <h4>X (Twitter)</h4>
+          <a href="https://x.com/dogsquadcentral" target="_blank">@dogsquadcentral</a>
+        </div>
+        <div class="contact-card">
+          <div class="contact-icon">📺</div>
+          <h4>YouTube</h4>
+          <a href="https://www.youtube.com/@network00" target="_blank">@network00</a>
+        </div>
+      </div>
+
+      <div class="social-links">
+        <a href="https://discord.gg/wV4kjB5T8" target="_blank" class="social-link">
+          💬 Join Discord
+        </a>
+        <a href="https://x.com/dogsquadcentral" target="_blank" class="social-link">
+          🐦 Follow on X
+        </a>
+        <a href="https://www.youtube.com/@network00" target="_blank" class="social-link">
+          📺 Subscribe on YouTube
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-brand">
+        <h3>🐕 Dog Squad Central</h3>
+        <p>Your trusted home for everything dogs. We provide expert guidance on breeds, nutrition, training, and health to help you give your furry friend the best life possible.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#breeds">Breeds</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="#nutrition">Nutrition Guide</a></li>
+          <li><a href="#training">Training Tips</a></li>
+          <li><a href="#health">Health Care</a></li>
+          <li><a href="#videos">Videos</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="https://discord.gg/wV4kjB5T8" target="_blank">Discord</a></li>
+          <li><a href="https://x.com/dogsquadcentral" target="_blank">X (Twitter)</a></li>
+          <li><a href="https://www.youtube.com/@network00" target="_blank">YouTube</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Dog Squad Central — Trusted home for everything dogs 🐶</p>
+      <p style="margin-top: 0.5rem;">All images are real dogs from Pexels — only canine companions featured.</p>
+    </div>
+  </footer>
+
+  <!-- Scroll to Top Button -->
+  <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">↑</button>
+
+  <!-- Image Modal -->
+  <div class="modal" id="imageModal">
+    <div class="modal-content">
+      <button class="modal-close" id="modalClose" aria-label="Close modal">×</button>
+      <img id="modalImage" src="" alt="">
+      <div class="modal-info">
+        <h3 id="modalName"></h3>
+        <p id="modalBreed"></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ==================== DOG GALLERY DATA (40+ Dogs) ====================
+    const dogGalleryData = [
+      // Small Dogs
+      { name: "Bella", breed: "Pomeranian", size: "small", img: "https://images.pexels.com/photos/58997/pexels-photo-58997.jpeg?auto=compress&cs=tinysrgb&w=600" },
+      { name: "Chloe", breed: "Maltese", size: "small", img: "https://images.pexels.com/photos/979104/pexels-photo-979104.jpeg?auto=compress&cs=tinysrgb&w=600" },
+      { name: "Bentley", breed: "Yorkshire Terrier", size: "small", img: "https://images.pexels.com/photos/1851164/pexels-photo-1851164.jpeg?auto=compress&cs=tinysrgb&w=600" },
+      { name: "Lola", breed: "Chihuahua", size: "small", img: "https://images.pexels.com/photos/374906/pexels-photo-374906.jpeg?auto=compress&cs=tinysrgb&w=600" },
+      { name: "Teddy", breed: "Shih Tzu", size: "small", img: "https://images.pexels.com/photos/4587956/pexels-photo-4587956.jpeg?auto=compress&cs=tinysrgb&w=600" },
+      { name: "Coco", breed: "French Bulldog", size: "small", img: "https://images.pexels.com/photos/4587997/pexels-photo-4587997.jpeg?auto=compress&cs=tinysrgb&w=600" },
+      { name: "Ginger", breed: "Cavalier King Charles", size: "small", img: "https://images.pexels.com/photos/4681107/pexels-photo-4681107.jpeg?auto=compress&cs=tinysrgb&w=600" },
+      { name: "Peanut", breed: "Dachshund", size: "small", img: "https://images.pexels.com/photos/1254140/pexels-photo-1254140.jpeg?auto=compress&cs=tinysrgb&w=600" },
+      { name: "Mochi", breed: "Pug", size: "small", img: "https://images.pexels.com/photos/1851242/pexels-photo-1851242.jpeg?auto=compress&cs=tinysrgb&w=600" },
+      { name: "Pixie", breed: "Papillon", size: "small", img: "https://images.pexels.com/photos/2253275/pexels-photo-2253275.jpeg?auto=compress&cs=tinysrgb&w=600" },
+      
+      // Medium Dogs
+      { name: "Rocky", breed: "English Bulldog", size: "medium", img: "https://images.pexels.com/photos/1629781/pexels-photo-1629781.jpeg?auto=compress&cs=tinysrgb&w=600" },
+      { name: "Bailey", breed: "Border Collie", size: "medium", img: "https://images.pexels.com/photos/1805165/pexels-photo-1805165.jpeg?auto=compress&cs=tinysrgb&w=600" },
+      { name: "Molly", breed: "Australian Shepherd", size: "medium", img: "https://images.pexels.com/photos/1458925/pexels-photo-1458925.jpeg?auto=compress&cs=tinysrgb&w=600" },
+      { name: "Daisy", breed: "Cocker Spaniel", size: "medium", img: "https://images.pexels.com/photos/2664417/pexels-photo-2664417.jpeg?auto=compress&cs=tinysrgb&w=600" },
+      { name: "Finn", breed: "Shiba Inu", size: "medium", img: "https://images.pexels.com/photos/1420405/pexels-photo-1420405.jpeg?auto=compress&cs=tinysrgb&w=600" },
+      { name: "Lucy", breed: "Beagle", size: "medium", img: "https://images.pexels.com/photos/2023384/pexels-photo-2023384.jpeg?auto=compress&cs=tinysrgb&w=600" },
+      { name: "Scout", breed: "Corgi", size: "medium", img: "https://images.pexels.com/photos/3726314/pexels-photo-3726314.jpeg?auto=compress&cs=tinysrgb&w=600" },
+      { name: "Duke", breed: "Boxer", size: "medium", img: "https://images.pexels.com/photos/2061057/pexels-photo-2061057.jpeg?auto=compress&cs=tinysrgb&w=600" },
+      { name: "Sadie", breed: "Brittany Spaniel", size: "medium", img: "https://images.pexels.com/photos/1078090/pexels-photo-1078090.jpeg?auto=compress&cs=tinysrgb&w=600" },
+      { name: "Cooper", breed: "Springer Spaniel", size: "medium", img: "https://images.pexels.com/photos/733416/pexels-photo-733416.jpeg?auto=compress&cs=tinysrgb&w=600" },
+      { name: "Rosie", breed: "Basset Hound", size: "medium", img: "https://images.pexels.com/photos/2607544/pexels-photo-2607544.jpeg?auto=compress&cs=tinysrgb&w=600" },
+      { name: "Bruno", breed: "Bull Terrier", size: "medium", img: "https://images.pexels.com/photos/160846/french-bulldog-summer-smile-joy-160846.jpeg?auto=compress&cs=tinysrgb&w=600" },
+      
+      // Large Dogs
+      { name: "Charlie", breed: "Golden Retriever", size: "large", img: "https://images.pexels.com/photos/1805164/pexels-photo-1805164.jpeg?auto=compress&cs=tinysrgb&w=600" },
+      { name: "Max", breed: "German Shepherd", size: "large", img: "https://images.pexels.com/photos/333083/pexels-photo-333083.jpeg?auto=compress&cs=tinysrgb&w=600" },
+      { name: "Zoe", breed: "Weimaraner", size: "large", img: "https://images.pexels.com/photos/257540/pexels-photo-257540.jpeg?auto=compress&cs=tinysrgb&w=600" },
+      { name: "Bear", breed: "Labrador Retriever", size: "large", img: "https://images.pexels.com/photos/356378/pexels-photo-356378.jpeg?auto=compress&cs=tinysrgb&w=600" },
+      { name: "Luna", breed: "Husky", size: "large", img: "https://images.pexels.com/photos/3715587/pexels-photo-3715587.jpeg?auto=compress&cs=tinysrgb&w=600" },
+      { name: "Zeus", breed: "Great Dane", size: "large", img: "https://images.pexels.com/photos/2742545/pexels-photo-2742545.jpeg?auto=compress&cs=tinysrgb&w=600" },
+      { name: "Athena", breed: "Doberman", size: "large", img: "https://images.pexels.com/photos/3908821/pexels-photo-3908821.jpeg?auto=compress&cs=tinysrgb&w=600" },
+      { name: "Thor", breed: "Rottweiler", size: "large", img: "https://images.pexels.com/photos/3628100/pexels-photo-3628100.jpeg?auto=compress&cs=tinysrgb&w=600" },
+      { name: "Shadow", breed: "Belgian Malinois", size: "large", img: "https://images.pexels.com/photos/2800382/pexels-photo-2800382.jpeg?auto=compress&cs=tinysrgb&w=600" },
+      { name: "Duke", breed: "Bernese Mountain Dog", size: "large", img: "https://images.pexels.com/photos/1420405/pexels-photo-1420405.jpeg?auto=compress&cs=tinysrgb&w=600" },
+      { name: "Apollo", breed: "Alaskan Malamute", size: "large", img: "https://images.pexels.com/photos/1294062/pexels-photo-1294062.jpeg?auto=compress&cs=tinysrgb&w=600" },
+      { name: "Rex", breed: "German Shepherd", size: "large", img: "https://images.pexels.com/photos/333084/pexels-photo-333084.jpeg?auto=compress&cs=tinysrgb&w=600" },
+      { name: "Simba", breed: "Golden Retriever", size: "large", img: "https://images.pexels.com/photos/1490908/pexels-photo-1490908.jpeg?auto=compress&cs=tinysrgb&w=600" },
+      { name: "Hank", breed: "Labrador Mix", size: "large", img: "https://images.pexels.com/photos/1975339/pexels-photo-1975339.jpeg?auto=compress&cs=tinysrgb&w=600" },
+      { name: "Diesel", breed: "Pit Bull", size: "large", img: "https://images.pexels.com/photos/825949/pexels-photo-825949.jpeg?auto=compress&cs=tinysrgb&w=600" },
+      { name: "Storm", breed: "Husky", size: "large", img: "https://images.pexels.com/photos/1389994/pexels-photo-1389994.jpeg?auto=compress&cs=tinysrgb&w=600" },
+      { name: "Atlas", breed: "Saint Bernard", size: "large", img: "https://images.pexels.com/photos/551628/pexels-photo-551628.jpeg?auto=compress&cs=tinysrgb&w=600" },
+      { name: "Nova", breed: "Australian Cattle Dog", size: "large", img: "https://images.pexels.com/photos/2820134/pexels-photo-2820134.jpeg?auto=compress&cs=tinysrgb&w=600" },
+      { name: "Winston", breed: "Mastiff", size: "large", img: "https://images.pexels.com/photos/1009922/pexels-photo-1009922.jpeg?auto=compress&cs=tinysrgb&w=600" },
+    ];
+
+    // ==================== GALLERY INITIALIZATION ====================
+    const galleryGrid = document.getElementById('galleryGrid');
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    let currentFilter = 'all';
+
+    function renderGallery(filter = 'all') {
+      galleryGrid.innerHTML = '';
+      const filteredDogs = filter === 'all' 
+        ? dogGalleryData 
+        : dogGalleryData.filter(dog => dog.size === filter);
+
+      filteredDogs.forEach((dog, index) => {
+        const card = document.createElement('div');
+        card.className = 'dog-card';
+        card.style.animationDelay = `${index * 0.05}s`;
+        card.innerHTML = `
+          <div class="dog-card-image">
+            <img 
+              src="${dog.img}" 
+              alt="${dog.breed} named ${dog.name}" 
+              loading="lazy"
+              onerror="this.src='https://images.pexels.com/photos/4587956/pexels-photo-4587956.jpeg?auto=compress&cs=tinysrgb&w=600'"
+            >
+            <span class="dog-card-badge">${dog.size.charAt(0).toUpperCase() + dog.size.slice(1)}</span>
+          </div>
+          <div class="dog-card-content">
+            <h3 class="dog-card-name">${dog.name}</h3>
+            <p class="dog-card-breed">🐕 ${dog.breed}</p>
+          </div>
+        `;
+        card.addEventListener('click', () => openModal(dog));
+        galleryGrid.appendChild(card);
+      });
+    }
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentFilter = btn.dataset.filter;
+        renderGallery(currentFilter);
+      });
+    });
+
+    renderGallery();
+
+    // ==================== IMAGE MODAL ====================
+    const modal = document.getElementById('imageModal');
+    const modalImage = document.getElementById('modalImage');
+    const modalName = document.getElementById('modalName');
+    const modalBreed = document.getElementById('modalBreed');
+    const modalClose = document.getElementById('modalClose');
+
+    function openModal(dog) {
+      modalImage.src = dog.img.replace('w=600', 'w=1200');
+      modalName.textContent = dog.name;
+      modalBreed.textContent = dog.breed;
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    modalClose.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeModal();
+    });
+
+    // ==================== VISITOR COUNTER ====================
+    let visitorCount = localStorage.getItem('dogSquadVisitorCount');
+    if (!visitorCount) {
+      visitorCount = 12487;
+    } else {
+      visitorCount = parseInt(visitorCount, 10);
+    }
+    const newCount = visitorCount + 1;
+    localStorage.setItem('dogSquadVisitorCount', newCount);
+
+    const counterElement = document.getElementById('visitorCount');
+    let currentDisplay = visitorCount;
+    const targetDisplay = newCount;
+
+    function animateCounter() {
+      const duration = 1500;
+      const startTime = performance.now();
+      
+      function update(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const easeOut = 1 - Math.pow(1 - progress, 3);
+        
+        currentDisplay = Math.floor(visitorCount + (newCount - visitorCount) * easeOut);
+        counterElement.textContent = currentDisplay.toLocaleString() + '+';
+        
+        if (progress < 1) {
+          requestAnimationFrame(update);
+        }
+      }
+      
+      requestAnimationFrame(update);
+    }
+
+    setTimeout(animateCounter, 500);
+
+    // ==================== NAVIGATION ====================
+    const navbar = document.getElementById('navbar');
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const navLinks = document.getElementById('navLinks');
+
+    // Scroll behavior for navbar
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // Mobile menu toggle
+    mobileMenuBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      mobileMenuBtn.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
+    });
+
+    // Close mobile menu when clicking a link
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        mobileMenuBtn.textContent = '☰';
+      });
+    });
+
+    // ==================== SCROLL TO TOP ====================
+    const scrollTopBtn = document.getElementById('scrollTop');
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 500) {
+        scrollTopBtn.classList.add('visible');
+      } else {
+        scrollTopBtn.classList.remove('visible');
+      }
+    });
+
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // ==================== SMOOTH SCROLL FOR ANCHOR LINKS ====================
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          const headerOffset = 100;
+          const elementPosition = target.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
